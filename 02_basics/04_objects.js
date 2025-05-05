@@ -58,3 +58,33 @@ console.log(Object.entries(tinderUser)); // convert each key value entry into a 
 // to check whether a particular key is exist or not in the object before used it, we used hasOwnProperty() method
 
 console.log(tinderUser.hasOwnProperty('isLoggedIn'));   // print true or false
+
+const course = {
+    coursename: "javascript",
+    price: "999",
+    courseInstructor: "dhruv"
+}
+
+// old way to access data
+// course.courseInstructor
+
+// new way to access data
+// const {courseInstructor} = course    <--- We can modified variable name
+const {courseInstructor: instruct} = course // here we modified variable
+
+// console.log(courseInstructor);
+console.log(instruct);
+
+// const navbar = ({company}) => {  <- Here we destructuring the object
+
+// }
+
+// navbar(company = "google")
+
+// json  -- Not object because object has name
+// {
+//     "name": "dhruv"
+//     "course": "javascript"
+//     "price": "free"
+// }
+
