@@ -1,23 +1,69 @@
-// const fs = require('fs');
-// const contents1 = fs.readFileSync('a.txt', 'UTF-8');     <-- Synchronous operation
-// const contents1 = fs.readFile('a.txt', 'UTF-8');         <-- Asynchronous operation
-// console.log(contents1);
-
-
-
-// Bellow code also perform asynchronous operation
-function timeout(){
-    console.log("hello world");
+function sayMyName(){
+    console.log("H");
+    console.log("I");
+    console.log("T");
+    console.log("E");
+    console.log("S");
+    console.log("H");
 }
 
-console.log("hii there");
+// sayMyName()
 
-setTimeout(timeout, 3000);         // IO Bound / IO Intensive Task
+// function addTwoNumbers(number1, number2){
 
+//     console.log(number1 + number2);
+// }
 
-for(i=0; i<30000000; i++){           // CPU Intensive Task
-    let c = 1;
-    c = i+1;
+function addTwoNumbers(number1, number2){
+
+    // let result = number1 + number2
+    // return result
+    return number1 + number2
 }
 
-console.log("Welcome to javaScript");           // First CPU Intensive task will execute even if takes too much time to run
+const result = addTwoNumbers(3, 5)
+
+// console.log("Result: ", result);
+
+
+function loginUserMessage(username = "sam"){
+    if(!username){
+        console.log("PLease enter a username");
+        return
+    }
+    return `${username} just logged in`
+}
+
+// console.log(loginUserMessage("hitesh"))
+// console.log(loginUserMessage("hitesh"))
+
+
+function calculateCartPrice(val1, val2, ...num1){
+    return num1
+}
+
+// console.log(calculateCartPrice(200, 400, 500, 2000))
+
+const user = {
+    username: "hitesh",
+    prices: 199
+}
+
+function handleObject(anyobject){
+    console.log(`Username is ${anyobject.username} and price is ${anyobject.price}`);
+}
+
+// handleObject(user)
+handleObject({
+    username: "sam",
+    price: 399
+})
+
+const myNewArray = [200, 400, 100, 600]
+
+function returnSecondValue(getArray){
+    return getArray[1]
+}
+
+// console.log(returnSecondValue(myNewArray));
+console.log(returnSecondValue([200, 400, 500, 1000]));
