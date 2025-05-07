@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    // Add new list item method 1
+    function addLanguage(lang)
+    {
+        const li = document.createElement('li')
+        li.innerHTML = `${lang}`
+        document.querySelector('.language').append(li)
+    }
+    addLanguage("Java")
+    addLanguage("Python")
+
+    // Add new list item method 2
+    function addOptimalLanguage(lang)
+    {
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(lang))
+        document.querySelector('.language').append(li)
+    }
+    addOptimalLanguage("C++")
+
+    //Edit 
+    const secondLang = document.querySelector('li:nth-child(2)')
+    // console.log(secondLang); <-  Gives java
+    
+    // secondLang.innerHTML = "EditMethod" // Method 1
+
+
+    // Method 2
+    const li = document.createElement('li')
+    li.textContent = "EditMethod"
+    secondLang.replaceWith(li)
+
+    
+    // Method 3
+    const firstLang = document.querySelector('li:first-child')
+    firstLang.outerHTML = "<li>EditMethod3</li>"
+
+    
+    // Remove Method
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove()
+
+</script>
+</html>
