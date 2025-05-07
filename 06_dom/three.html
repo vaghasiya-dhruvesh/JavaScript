@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    
+</body>
+<script>
+    const div = document.createElement('dhruv')
+    console.log(div);
+    div.className = "divClass"
+    div.id = "dhruvId"
+    // div.id = Math.round(Math.random() * 10 + 1)  <- We can also assign id like this
+
+    div.setAttribute("title", "JavaScript")
+    div.style.backgroundColor = "white"
+    div.style.color = "red"
+    // div.innerText = "Welcome to JavaScript"  <-- Try to avoid it
+    const text = document.createTextNode("Welcome to India")
+    div.appendChild(text) // append text to the div
+
+    document.body.append(div)
+
+</script>
+</html>
