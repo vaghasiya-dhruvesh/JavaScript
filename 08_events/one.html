@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head> 
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // const img = document.getElementById('images')
+    // img.onclick = function (){
+    //     alert('hello world');
+    // }
+
+    // document.getElementById('owl').onclick = function(){
+    //     alert("owl clicked")
+    // }
+
+     // attachEvent()
+    // jQuery - on
+
+    // type, timestamp, preventedDefault
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+    const img = document.getElementById('images')
+    img.addEventListener('click', function (e) {
+        console.log('inside the ul tag')
+    }, false)   // false <- Bubbling method(bottom to top),   
+    // true  <- Capturing Method  (top to bottom)
+
+    document.getElementById('owl').addEventListener('click', function (e){
+        console.log('Owl clicked');
+        e.stopPropagation() // it is used to stop propagate from bottom to top or vice versa
+    }, false)   
+
+    // document.getElementById('owl').addEventListener('click', function (e){
+    //     console.log('Owl clicked');
+    //      console.log(e)
+    // }, true) 
+
+    document.getElementById('google').addEventListener('click', function(e){
+        e.preventDefault() // this method is used to stop default behaviour of the current element when this event is trigger
+        e.stopPropagation()
+    },false)
+
+    document.getElementById('images').addEventListener('click', function(e){
+        // console.log(e.target);  
+        console.log(e.target.tagName); // this give us IMG or UL based upon click
+
+        if(e.target.tagName === 'IMG'){
+            let removeItem = e.target.parentNode;   // removeItem store LI as parentNode
+            removeItem.remove(); // here we completely remove LI onClick
+        }
+         //removeIt.parentNode.removeChild(removeIt)  <- we can also used this method
+    },false)
+
+</script>
+</html>
