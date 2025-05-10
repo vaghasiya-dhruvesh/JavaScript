@@ -6,17 +6,39 @@
     <title>Advance topic</title>
 </head>
 <body style="background-color: black; color : white;">
-0	UNSENT	Client has been created. open() not called yet.
+<!-- 0	UNSENT	Client has been created. open() not called yet.
 1	OPENED	open() has been called.
 2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
 3	LOADING	Downloading; responseText holds partial data.
-4	DONE	The operation is complete.
+4	DONE	The operation is complete. -->
+
+<button id="display">Display User Name</button>
+<span id="details"></span>
 </body>
 <script>
-    const url = "https://api.github.com/users/vaghasiya-dhruvesh";
+    const url = 'https://api.github.com/users/vaghasiya-dhruvesh'
 
-    const xhr = XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     
-    
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState === 4){
+            const data = JSON.parse(this.responseText);     // responseText gives string and we have to convert string into JSON object.
+            console.log(typeof data);   // Object
+            console.log(data.login) // vaghasiya-dhruvesh
+
+            document.getElementById('display').addEventListener('click', () => {
+                const print = document.getElementById('details');
+                print.innerHTML = data.name
+                
+                const p = document.createElement('p');
+                p.innerHTML = data.bio
+
+                document.body.append(p);
+            })
+        }
+    }
+    xhr.send();
 </script>
 </html>
